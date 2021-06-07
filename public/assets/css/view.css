@@ -1,0 +1,30 @@
+
+body {
+  /* font-size: 14px; */
+  /* font-weight: 400; */
+  font-family: "Nunito", "Segoe UI", arial;
+  font-weight: 400;
+}
+
+.label-text {
+    font-weight: 600;
+}
+
+b.required {
+    color: red;
+}
+
+label.form-check-label {
+    font-weight: 600;
+    font-size: 13px;
+}
+
+div.display-left {
+    background-color:#ff8509;
+    height: 100rem;
+    padding-left: 50px;
+    padding-top: 80px;
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+}
