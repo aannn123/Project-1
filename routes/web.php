@@ -17,8 +17,18 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/admin', 'AdminController@index');
-
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
+
+// ADMIN
+Route::get('/admin', 'AdminController@index')->name('admin');
+
+Route::resource('/seating', 'SeatController');
+
+// FROM
+Route::resource('/admin/form', 'FormController');
+
+// GEREJA
+Route::resource('/admin/gereja', 'GerejaController');
+

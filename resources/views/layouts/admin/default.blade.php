@@ -28,7 +28,7 @@
 
             <!-- Main Content -->
             <div class="main-content">
-                <section class="section">
+                {{-- <section class="section">
                     <div class="section-header">
                         <h1>
                             @yield('title')
@@ -37,12 +37,13 @@
 
                     </div>
 
-                    @yield('content')
-                </section>
+                </section> --}}
+                @yield('content')
+
             </div>
             <footer class="main-footer">
                 <div class="footer-left">
-                    Copyright &copy; {{date('Y')}} SMK Kesehatan Fahd Islamic School 
+                    Copyright &copy; {{date('Y')}} FF 
                 </div>
                 {{-- <div class="footer-right">
                     2.3.0
