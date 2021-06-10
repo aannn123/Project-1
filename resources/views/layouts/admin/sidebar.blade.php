@@ -7,11 +7,11 @@
             <a href="index.html">St</a>
         </div>
         <ul class="sidebar-menu">
-            <li class="menu-header">Dashboard</li>
-            <li><a class="nav-link" href="blank.html"><i class="fas fa-th"></i> <span>Dashboard</span></a></li>
+            {{-- <li class="menu-header">Dashboard</li>
+            <li><a class="nav-link" href="blank.html"><i class="fas fa-th"></i> <span>Dashboard</span></a></li> --}}
 
             <li class="menu-header">Feature</li>
-            <li class="nav-item dropdown">
+            {{-- <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i>
                     <span>Data Master</span></a>
                 <ul class="dropdown-menu">
@@ -20,7 +20,7 @@
                     <li><a class="nav-link" href="components-chat-box.html">Kelas</a></li>
                     <li><a class="nav-link" href="components-chat-box.html">Jenis Pembayaran</a></li>
                 </ul>
-            </li>
+            </li> --}}
             <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-users"></i>
                     <span>Manajemen User</span></a>

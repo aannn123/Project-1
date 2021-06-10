@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/admin', 'AdminController@index');
-Route::get('/user', 'UserController@index');
+Route::get('/pendaftaran-ibadah', 'UserController@index')->name('regist');
+Route::post('/pendaftaran-ibadah', 'UserController@sendRegist')->name('regist.post');
+Route::get('/result', 'UserController@result');
+Route::get('/home', 'HomeController@index')->name('home');

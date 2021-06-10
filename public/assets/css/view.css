@@ -4,6 +4,7 @@ body {
   /* font-weight: 400; */
   font-family: "Nunito", "Segoe UI", arial;
   font-weight: 400;
+  overflow-x: hidden;
 }
 
 .label-text {
@@ -19,12 +20,35 @@ label.form-check-label {
     font-size: 13px;
 }
 
+div.seat {
+    background-color: #eeaa0e;
+    border-radius: 5px;
+    color: black    ;
+    font-weight: 500;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+}
+
 div.display-left {
     background-color:#ff8509;
-    height: 100rem;
     padding-left: 50px;
     padding-top: 80px;
     color: white;
     font-size: 13px;
     font-weight: 500;
+}
+
+@media only screen and (max-width: 600px) {
+    div.display-left {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+} 
+
+p.text-hint {
+    color: black;
+    font-weight: 400;
 }
