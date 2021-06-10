@@ -27,10 +27,10 @@
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-users"></i>
                     <span>Data Form</span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="gmaps-advanced-route.html">Memenuhi Syarat</a></li>
+                        <li><a href="{{route('memenuhi')}}">Memenuhi Syarat</a></li>
                     </ul>
                     <ul class="dropdown-menu">
-                        <li><a href="gmaps-advanced-route.html">Tidak Memenuhi Syarat</a></li>
+                        <li><a href="{{route('tidakMemenuhi')}}">Tidak Memenuhi Syarat</a></li>
                     </ul>
             </li>
             <li>

@@ -86,4 +86,24 @@ class FormController extends Controller
     {
         //
     }
+
+    public function memenuhiSyarat()
+    {
+        return view('pages.form.memenuhiSyarat');
+    }
+
+    public function tidakMemenuhiSyarat()
+    {
+        return view('pages.form.tidakMemenuhiSyarat');
+    }
+
+    public function listMemenuhiSyarat()
+    {
+        return view('pages.form.listMemenuhiSyarat');
+    }
+
+    public function listTidakMemenuhiSyarat()
+    {
+        return view('pages.form.listTidakMemenuhiSyarat');
+    }
 }

@@ -70,7 +70,11 @@ class GerejaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = Gereja::findOrFail($id);
+
+        return view('pages.gereja.edit')->with([
+            'item' => $item
+        ]);
     }
 
     /**
@@ -82,7 +86,10 @@ class GerejaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $gereja = Gereja::findOrFail($id);
+        $gereja->update($data);
+        return redirect()->route('gereja.index');
     }
 
     /**
@@ -93,6 +100,9 @@ class GerejaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Gereja::findOrFail($id);
+        $item->delete();
+
+        return redirect()->route('gereja.index');
     }
 }
