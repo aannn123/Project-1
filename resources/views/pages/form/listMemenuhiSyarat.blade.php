@@ -21,22 +21,46 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Name</th>
+                                            <th>Nomor Telepon</th>
                                             <th>Address</th>
                                             <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <th>1</th>
-                                            <th>Bujang</th>
-                                            <th>Jakarta Selatan</th>
-                                            <th>Memenuhi Syarat</th>
+                                            <td>1</td>
+                                            <td>Bujang</td>
+                                            <td>02930293</td>
+                                            <td>Jakarta</td>
+                                            <td><div class="badge badge-success">Memenuhi Syarat</div></td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
+                            <button type="submit" class="btn btn-primary float-right">Import</button>
 
+                        </div>
+                        <div class="col-12">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                              <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                  <span aria-hidden="true">&laquo;</span>
+                                  <span class="sr-only">Previous</span>
+                                </a>
+                              </li>
+                              <li class="page-item"><a class="page-link" href="#">1</a></li>
+                              <li class="page-item"><a class="page-link" href="#">2</a></li>
+                              <li class="page-item"><a class="page-link" href="#">3</a></li>
+                              <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                  <span aria-hidden="true">&raquo;</span>
+                                  <span class="sr-only">Next</span>
+                                </a>
+                              </li>
+                            </ul>
+                          </nav>
+                        </div>
                     </div>
                 </div>
             </div>

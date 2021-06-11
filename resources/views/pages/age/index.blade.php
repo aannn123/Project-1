@@ -9,11 +9,11 @@
                         {{-- CARD HEADER --}}
                         <div class="card-header">
                             <div class="col-sm-12 col-md-6">
-                                <h3>Gereja</h3>
+                                <h3>Usia</h3>
                             </div>
                             <div class="col-sm-12 col-md-6">
-                                <a href="{{route('gereja.create')}}" class="btn btn-light float-right">
-                                    Tambah
+                                <a href="{{route('age.create')}}" class="btn btn-light float-right">
+                                    Create
                                 </a>
                             </div>
                         </div>
@@ -24,12 +24,8 @@
                                 <table class="table table-striped" id="table">
                                     <thead>
                                         <tr>
-                                            <th>Id</th>
-                                            <th>Nama Gereja</th>
-                                            <th>Bangku</th>
-                                            <th>Nomor Telepon</th>
-                                            <th>Email</th>
-                                            <th>Alamat</th>
+                                            <th>ID</th>
+                                            <th>Usia</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -42,19 +38,12 @@
                                         
                                         <tr>
                                             <td>{{$no++}}</td>
-                                            <td>{{$item->name}}</td>
-                                            <td>{{$item->seat}}</td>
-                                            <td>{{$item->no_telephone}}</td>
-                                            <td>{{$item->email}}</td>
-                                            <td>{{$item->address}}</td>
+                                            <td>{{$item->number}}</td>
                                             <td>
-                                                {{-- <a href="#" class= "btn btn-info btn-sm">
-                                                <i class="fa fa-eye"></i>
-                                                </a> --}}
                                                 <a href="{{route('gereja.edit', $item->id)}}" class="btn btn-primary btn-sm">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
-                                                <form action="{{route('gereja.destroy', $item->id)}}" method="post" class="d-inline">
+                                                <form action="{{route('age.destroy', $item->id)}}" method="post" class="d-inline">
                                                     @csrf
                                                     @method('delete')
                                                     <button class="btn btn-danger btn-sm">
@@ -66,7 +55,9 @@
 
                                         @endforeach
                                     </tbody>
+
                                 </table>
+                                {{$items->links()}}
                             </div>
                         </div>
 

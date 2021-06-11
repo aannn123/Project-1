@@ -17,6 +17,8 @@ class CreateTChurchsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('seat');
+            $table->integer('no_telephone');
+            $table->varchar('email');
             $table->longText('address')->nullable();
             $table->softDeletes();
             $table->timestamps();

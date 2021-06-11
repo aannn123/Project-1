@@ -15,6 +15,8 @@ class Gereja extends Model
         'id',
         'name',
         'seat',
+        'no_telephone',
+        'email',
         'address'
     ];
 }

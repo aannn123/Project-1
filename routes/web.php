@@ -24,6 +24,7 @@ Auth::routes();
 // ADMIN
 Route::get('/admin', 'AdminController@index')->name('admin');
 
+// SEAT
 Route::resource('/seating', 'SeatController');
 
 // FROM
@@ -35,4 +36,10 @@ Route::get('/admin/listTidakMemenuhiSyarat', 'FormController@listTidakMemenuhiSy
 
 // GEREJA
 Route::resource('/admin/gereja', 'GerejaController');
+
+// WORSHIP
+Route::resource('/admin/worship', 'WorshipsController');
+
+// AGE
+Route::resource('/admin/age', 'AgeController');
 
