@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Hash;
 
 use App\Models\Gereja;
+use App\Models\SeatChurch;
 
 class GerejaController extends Controller
 {
@@ -46,8 +47,19 @@ class GerejaController extends Controller
      */
     public function store(Request $request)
     {
+        // $data = $request->all();
+        // Gereja::create($data);
+        // return redirect()->route('gereja.index');
         $data = $request->all();
-        Gereja::create($data);
+        $seat = (int)$data['seat'];
+        $result = Gereja::create($data);
+        for ($i=0; $i < $seat; $i++) { 
+            SeatChurch::create([
+                'churc_id' => $result['id'],
+                'number' => $i+1,
+                'status' => 'Active',
+            ]);
+        }
         return redirect()->route('gereja.index');
     }
 

@@ -19,4 +19,9 @@ class Gereja extends Model
         'email',
         'address'
     ];
+
+    public function register()
+    {
+        return $this->hasMany(Registrants::class, 'church_id');
+    }
 }

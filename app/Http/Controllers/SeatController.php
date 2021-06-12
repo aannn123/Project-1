@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Seat;
+use App\Models\Gereja;
+
 class SeatController extends Controller
 {
     /**
@@ -13,7 +16,28 @@ class SeatController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        
+    }
+
+    public function kursi()
+    {
+        $items = Gereja::all();
+
+        return view('pages.seat.indexSeat')->with([
+            'items' => $items
+        ]);
+    }
+
+    public function setKursi($id)
+    {
+        $gereja = Gereja::where('id', $id)->first();
+        $items = Seat::where('churc_id', $gereja->id)->get();
+        // var_dump($items);die();
+
+        return view('pages.seat.setKursi')->with([
+            'items' => $items,
+            'gereja' => $gereja
+        ]);
     }
 
     /**
@@ -68,7 +92,19 @@ class SeatController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $gereja = Gereja::where('id', $id)->first();
+        $seat = Seat::where('churc_id', $gereja->id)->first();
+        // $status = $request->input('status');
+        $seat->update($data);
+
+        // $seat->save();
+
+        // $status = $request->input('status');
+        // $item = Seat::findOrFail($id);
+        // $item->update($status);
+        return redirect()->route('setKursi', $gereja->id);
+
     }
 
     /**

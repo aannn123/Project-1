@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gereja;
+use App\Models\Registrants;
 use Illuminate\Http\Request;
 
 class FormController extends Controller
@@ -89,7 +91,13 @@ class FormController extends Controller
 
     public function memenuhiSyarat()
     {
-        return view('pages.form.memenuhiSyarat');
+        $gereja = Gereja::where('id')->first();
+
+        $items = Registrants::with(['gereja'])->where()->get();
+        var_dump($gereja);die(); 
+        return view('pages.form.memenuhiSyarat')->with([
+            'items' => $items
+        ]);
     }
 
     public function tidakMemenuhiSyarat()

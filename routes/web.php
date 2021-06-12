@@ -25,7 +25,9 @@ Auth::routes();
 Route::get('/admin', 'AdminController@index')->name('admin');
 
 // SEAT
-Route::resource('/seating', 'SeatController');
+Route::resource('/admin/kursi', 'SeatController');
+Route::get('/admin/kursi', 'SeatController@kursi')->name('kursi');
+Route::get('/admin/kursi/setKursi/{id}', 'SeatController@setKursi')->name('setKursi');
 
 // FROM
 Route::resource('/admin/form', 'FormController');

@@ -57,13 +57,10 @@
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-chair"></i>
                     <span>Kursi</span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="gmaps-advanced-route.html">Status Kursi</a></li>
-                </ul>
-                <ul class="dropdown-menu">
-                    <li><a href="gmaps-advanced-route.html">Set Kursi</a></li>
+                    <li><a href="{{route('kursi')}}">Kursi Gereja</a></li>
                 </ul>
                 {{-- <ul class="dropdown-menu">
-                    <li><a href="gmaps-advanced-route.html">Penamaan Kursi</a></li>
+                    <li><a href="">Set Kursi</a></li>
                 </ul> --}}
             </li>
             {{-- <li class="nav-item dropdown">

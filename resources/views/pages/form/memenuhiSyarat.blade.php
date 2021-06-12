@@ -19,12 +19,16 @@
                                 @csrf
                                 <div class="form-row">
                                   <div class="col-6">
+                                      @foreach ($items as $item)
+                                          
                                     <select class="form-control" name="status_huni">
                                         <option disabled >--PILIH CABANG--</option>
-                                        <option value="dihuni">GEREJA A</option>
+                                        <option value="dihuni">{{$item}}</option>
                                         <option value="dihuni">GEREJA B</option>
                                         <option value="dihuni">GEREJA C</option>
                                     </select>
+
+                                    @endforeach
                                   </div>
                                   <div class="col-2">
                                     <input type="date" class="form-control" placeholder="State">
