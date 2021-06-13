@@ -33,6 +33,7 @@
     <script src="{{ asset('assets/js/jquery-1.12.4.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap-bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/cannot-back.js') }}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @stack('js')
 </body>

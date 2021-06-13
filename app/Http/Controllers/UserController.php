@@ -7,13 +7,12 @@ use App\Models\Registrants;
 use App\Models\SeatChurch;
 use App\Models\Worships;
 use Illuminate\Http\Request;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
+// use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class UserController extends Controller
 {
     public function index()
     {
-        // QrCode::generate('Make me into a QrCode!');
         $church = Church::all();
         $worship = Worships::all();
         return view('user.index')->with([
@@ -84,16 +83,15 @@ class UserController extends Controller
     public function result($name)
     {
         $regist = Registrants::where('code',$name)->with('worship','seat')->first();
+
         return view('user.result')->with([
-            'data'=>$regist
+            'data'=>$regist,
         ]);
     }
 
     public function seatSelection($name)
     {
         $data = Registrants::where('code', $name)->first();
-        // QrCode::format);
-        QrCode::generate('Make me into a QrCode!');
         $seat = SeatChurch::where('churc_id', $data['church_id'])->get();
         $collection = collect($seat);
         $mainRoom = $collection->slice(0,102);

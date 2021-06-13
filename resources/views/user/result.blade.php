@@ -40,8 +40,7 @@
                         No. Tempat Duduk &nbsp; <b>{{$data->seat->number}}</b>
                     </div>
                     <div class="d-flex justify-content-center">
-                        <img style="width:200px;height:200px"
-                            src="https://suryayogya.com/wp-content/uploads/2020/06/barcode.png" alt="">
+                        {!! QrCode::size(200)->generate(url()->current()); !!}
                     </div>
                 </div>
             @endif
@@ -58,10 +57,8 @@
                         <p>Majelis Jemaat memahami kerinduan anda untuk datang beribadah. Namun demi kebaikan dan keselamatan bersama, kami merekomendasikan anda mengikuti ibadah secara daring / online pada ibadah pk. 09.30, 9 Mei 2021. Silakan mendaftar kembali dalam kesempatan ibadah yang lain jika anda sudah memenuhi syarat - syarat yang ditetapkan pemerintah dan gereja. Tuhan memberkati anda.</p>
                     </div>
                 @endif
-                <div class="mt-5 d-flex justify-content-center">
-                    <p><b>Anda dapat melihat penjelasan <a href="#"><button class="btn btn-danger">protokol
-                                    kesehatan</button></a> dan <a href="#"><button class="btn btn-danger">pesan
-                                    pastoral</button></a> GKI Coyudan pada menu diatas.</b> </p>
+                <div class="mt-5">
+                    <p><a href="{{route('')}}" class="btn btn-success"><i class="fas fa-arrow-left"></i> Kembali ke pendaftaran</a></p>
                 </div>
             </div>
         </div>
