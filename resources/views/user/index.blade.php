@@ -6,6 +6,7 @@
             Kami memahami kerinduan Bpk/Ibu/Sdr/Sdri untuk datang beribadah. Namun jika belum memenuhi syarat
             kesehatan, kami minta Anda mengikuti Ibadah online.
         </i></p>
+        
     <div>
         <form action="{{ route('regist.post') }}" method="POST">
             @csrf
@@ -300,7 +301,7 @@
                     @enderror
                 </div>
 
-                <input type="submit" value="Submit" class="btn btn-default mt-3"
+                <input type="submit" onclick="test()" value="Submit" class="btn btn-default mt-3"
                     style="background-color: #745242;color: white;font-weight:bold">
 
             </div>

@@ -52,3 +52,48 @@ p.text-hint {
     color: black;
     font-weight: 400;
 }
+
+.wrapper-seat {
+    background-color: #e0e3ff;
+    /* border: 1px solid #ff8509; */
+    /* height: 100px; */
+    margin-bottom: 50px;
+    padding: 10px 15px 15px 15px;
+    width: 95%;
+    border-radius: 10px;
+}
+
+.seat-item {
+    background-color:  #fafdfb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    padding-top: 5px;
+    border-radius: 10px;
+}
+
+.label-text-utama {
+    background-color: #28a745;
+    color: white;
+    font-size: 14px;
+    padding: 5px 5px 5px 5px;
+    border-radius: 5px;
+}
+
+.label-text-serambi {
+    background-color: #007afe;
+    color: white;
+    font-size: 14px;
+    padding: 5px 5px 5px 5px;
+    border-radius: 5px;
+}
+
+.label-text-balkon {
+    background-color: #6b747c;
+    color: white;
+    font-size: 14px;
+    padding: 5px 5px 5px 5px;
+    border-radius: 5px;
+}

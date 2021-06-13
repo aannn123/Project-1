@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Church;
 use App\Models\Registrants;
+use App\Models\SeatChurch;
 use App\Models\Worships;
 use Illuminate\Http\Request;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class UserController extends Controller
 {
     public function index()
     {
+        // QrCode::generate('Make me into a QrCode!');
         $church = Church::all();
         $worship = Worships::all();
         return view('user.index')->with([
@@ -24,8 +27,6 @@ class UserController extends Controller
         $data = $request->all();
         $churchId = $request->post('church_id');
         $church = Church::where('id', $churchId)->first();
-        // var_dump($data['church'])
-        // var_dump($data['answer_2']);die();
         $request->validate(
             [
                 'church_id' => 'required',
@@ -62,21 +63,62 @@ class UserController extends Controller
                 'answer_8.required' => 'Pertanyan kedelapan wajib diisi',
             ]
         );
+        $name = str_replace(' ','',$data['fullname']);
         $a1 = 'Ya, saya sehat dalam 14 hari terakhir';
         $a3 = 'Tidak, saya tidak berkunjung ke rumah sakit';
         if ($data['answer_1'] == $a1 && $data['answer_2'] == 'Tidak' && $data['answer_3'] == $a3 && $data['answer_4'] == 'Tidak' && $data['answer_5'] == 'Tidak' && $data['answer_6'] == 'Tidak' && $data['answer_7'] == 'Ya' && $data['answer_8'] == 'Ya') {
             $data['church_name'] = $church['name'];
             $data['status'] = 'Success';
+            $data['code'] = str_shuffle(mt_rand(100,1000).$name);
         } else {
             $data['church_name'] = $church['name'];
             $data['status'] = 'Failed';
+            $data['code'] = str_shuffle(mt_rand(100,1000).$name);
         }
-        Registrants::create($data);
+        $user = Registrants::create($data);
+        // var_dump($user['fullname']);die();
+        return redirect()->route('seat', $user['code']);
 
     }
 
-    public function result()
+    public function result($name)
     {
-        return view('user.result');
+        $regist = Registrants::where('code',$name)->with('worship','seat')->first();
+        return view('user.result')->with([
+            'data'=>$regist
+        ]);
+    }
+
+    public function seatSelection($name)
+    {
+        $data = Registrants::where('code', $name)->first();
+        // QrCode::format);
+        QrCode::generate('Make me into a QrCode!');
+        $seat = SeatChurch::where('churc_id', $data['church_id'])->get();
+        $collection = collect($seat);
+        $mainRoom = $collection->slice(0,102);
+        $porch = $collection->slice(102,37);
+        $balkon = $collection->slice(139,210);
+        return view('user.seat')->with([
+            'name' => $data['code'],
+            'main' => $mainRoom,
+            'porch' => $porch,
+            'balkon' => $balkon,
+        ]);
+    }
+
+    public function seatSelectionPost(Request $request, $name)
+    {
+        $data = Registrants::where('code', $name)->first();
+        $seatId = $request->post('id');
+        $seat = SeatChurch::where('id', $seatId)->first();
+        $data['church_seat_id'] = $seatId;
+        $seat['registrant_id'] = $data['id'];
+        $seat->save();
+        $data->save();
+
+        return redirect()->route('regist.result', $data['code']);
+
+
     }
 }
