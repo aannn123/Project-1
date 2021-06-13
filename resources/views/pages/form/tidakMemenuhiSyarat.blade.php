@@ -9,39 +9,75 @@
                         {{-- CARD HEADER --}}
                         <div class="card-header">
                             <div class="col-sm-12 col-md-6">
-                                <h3>Filter yang tidak memenuhi syarat</h3>
+                                <h3>Filter Yang Memenuhi Syarat</h3>
                             </div>
                         </div>
 
                         {{-- CARD BODY --}}
                         <div class="card-body">
-                            <form action="{{route('listTidakMemenuhi')}}">
+                            <form action="{{route('memenuhi')}}" method="GET">
                                 @csrf
                                 <div class="form-row">
-                                  <div class="col-6">
-                                    <select class="form-control" name="status_huni">
-                                        <option disabled >--PILIH CABANG--</option>
-                                        <option value="dihuni">GEREJA A</option>
-                                        <option value="dihuni">GEREJA B</option>
-                                        <option value="dihuni">GEREJA C</option>
-                                    </select>
-                                  </div>
-                                  <div class="col-2">
-                                    <input type="date" class="form-control" placeholder="State">
-                                  </div>
-                                  <p>TO</p>
-                                  <div class="col-2">
-                                    <input type="date" class="form-control" placeholder="Zip">
-                                  </div>
+                                    <div class="col-6">
+                                        <select class="form-control" name="">
+                                            <option selected disabled>--PILIH GEREJA--</option>
+
+                                            @foreach ($items as $item)
+                                                <option value="{{ $item->id }}">{{ $item->church_name }}</option>
+                                            @endforeach
+
+                                        </select>
+                                    </div>
+                                    <div class="col-2">
+                                        <input type="date" class="form-control" name="from">
+                                    </div>
+                                    <p>TO</p>
+                                    <div class="col-2">
+                                        <input type="date" class="form-control" name="to">
+                                    </div>
                                 </div>
 
                                 <div>
-                                <button type="submit" class="btn btn-primary float-right">Tambah</button>
-                            </div>
+                                    <button type="submit" class="btn btn-primary float-right">Confirm</button>
+                                </div>
 
-                              </form>
+                            </form>
                         </div>
-                        
+
+                        {{-- CARD BODY --}}
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped" id="table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Nomor Telepon</th>
+                                            <th>Address</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    {{-- @if ($items->status == 'Success') --}}
+
+                                    <tbody>
+                                        @foreach ($items as $item)                                            
+                                        <tr>
+                                            <td>{{$item->id}}</td>
+                                            <td>{{$item->fullname}}</td>
+                                            <td>{{$item->phone_number}}</td>
+                                            <td>{{$item->address}}</td>
+                                            <td>{{$item->status}}</td>
+                                            {{-- <td><div class="badge badge-success">Memenuhi Syarat</div></td> --}}
+                                        </tr>
+                                        @endforeach
+                                            
+                                    </tbody>
+                                    {{-- @endif --}}
+
+                                </table>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

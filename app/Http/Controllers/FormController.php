@@ -23,6 +23,66 @@ class FormController extends Controller
         return view('pages.form.index');
     }
 
+    public function memenuhiSyarat(Request $request)
+    {
+        $from = $request->query('from');
+        $to = $request->query('to');
+        $gereja = $request->query('gereja');
+
+        if ($from && $to) {
+            $items = Registrants::whereBetween('created_at', [$from, $to])->where('church_id', $gereja)->where('status', 'Success')->get();
+        } else {
+            $items = Registrants::all();
+            // var_dump($items);die();
+        }
+        return view('pages.form.memenuhiSyarat')->with([
+            'items' => $items
+        ]);
+    }
+
+    public function storeMemenuhiSyarat(Request $request)
+    {
+        $from = $request->post('from');
+        $to = $request->post('to');
+
+        $fromm = Registrants::whereBeetween('created_at', [$from,$to])->get();
+        
+        return redirect()->route('gereja.index');
+
+        // whereBetween('created_at',array($from,$to))
+        // whereBetween('created_at',[$from,$to])
+        // $from = $request->post('from-date');
+        // $to = $request->post('to-date');
+    }
+
+    public function tidakMemenuhiSyarat(Request $request)
+    {
+        $from = $request->query('from');
+        $to = $request->query('to');
+        $gereja = $request->query('gereja');
+
+        if ($from && $to) {
+            $items = Registrants::whereBetween('created_at', [$from, $to])->where('church_id', $gereja)->where('status', 'Tidak')->get();
+        } else {
+            $items = Registrants::all();
+            // var_dump($items);die();
+        }
+        return view('pages.form.tidakMemenuhiSyarat')->with([
+            'items' => $items
+        ]);
+
+        // return view('pages.form.tidakMemenuhiSyarat');
+    }
+
+    public function listMemenuhiSyarat()
+    {
+        return view('pages.form.listMemenuhiSyarat');
+    }
+
+    public function listTidakMemenuhiSyarat()
+    {
+        return view('pages.form.listTidakMemenuhiSyarat');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -89,29 +149,5 @@ class FormController extends Controller
         //
     }
 
-    public function memenuhiSyarat()
-    {
-        $gereja = Gereja::where('id')->first();
-
-        $items = Registrants::with(['gereja'])->where()->get();
-        var_dump($gereja);die(); 
-        return view('pages.form.memenuhiSyarat')->with([
-            'items' => $items
-        ]);
-    }
-
-    public function tidakMemenuhiSyarat()
-    {
-        return view('pages.form.tidakMemenuhiSyarat');
-    }
-
-    public function listMemenuhiSyarat()
-    {
-        return view('pages.form.listMemenuhiSyarat');
-    }
-
-    public function listTidakMemenuhiSyarat()
-    {
-        return view('pages.form.listTidakMemenuhiSyarat');
-    }
+    
 }

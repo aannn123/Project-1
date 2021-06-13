@@ -16,7 +16,7 @@ class CreateTRegistrantsTable extends Migration
         Schema::create('t_registrants', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('church_id');
-            $table->integer('church_name');
+            $table->varchar('church_name');
             $table->integer('worship_id');
             $table->integer('church_seat_id');
             $table->string('fullname');

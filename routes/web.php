@@ -28,6 +28,8 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 Route::resource('/admin/kursi', 'SeatController');
 Route::get('/admin/kursi', 'SeatController@kursi')->name('kursi');
 Route::get('/admin/kursi/setKursi/{id}', 'SeatController@setKursi')->name('setKursi');
+Route::get('/admin/kursi/setKursi/status/active/{id}', 'SeatController@active')->name('active');
+Route::get('/admin/kursi/setKursi/status/tidak/{id}', 'SeatController@tidak')->name('tidak');
 
 // FROM
 Route::resource('/admin/form', 'FormController');

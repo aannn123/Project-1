@@ -34,8 +34,4 @@ class Registrants extends Model
         'status',
     ];
 
-    public function gereja()
-    {
-        return $this->belongsTo(Gereja::class, 'church_id', 'id');
-    }
 }
