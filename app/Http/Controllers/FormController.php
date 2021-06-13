@@ -45,8 +45,8 @@ class FormController extends Controller
         $from = $request->post('from');
         $to = $request->post('to');
 
-        $fromm = Registrants::whereBeetween('created_at', [$from,$to])->get();
-        
+        $fromm = Registrants::whereBeetween('created_at', [$from, $to])->get();
+
         return redirect()->route('gereja.index');
 
         // whereBetween('created_at',array($from,$to))
@@ -104,6 +104,40 @@ class FormController extends Controller
         //
     }
 
+    function exportCsv(Request $request)
+    {
+        $fileName = 'memenuhi_syarat.csv';
+        $tasks = Registrants::all();
+
+        $headers = array(
+            "Content-type"        => "text/csv",
+            "Content-Disposition" => "attachment; filename=$fileName",
+            "Pragma"              => "no-cache",
+            "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+            "Expires"             => "0"
+        );
+
+        $columns = array('Title', 'Assign', 'Description', 'Start Date', 'Due Date');
+
+        $callback = function () use ($tasks, $columns) {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $columns);
+
+            foreach ($tasks as $task) {
+                $row['Title']  = $task->title;
+                $row['Assign']    = $task->assign->name;
+                $row['Description']    = $task->description;
+                $row['Start Date']  = $task->start_at;
+                $row['Due Date']  = $task->end_at;
+
+                fputcsv($file, array($row['Title'], $row['Assign'], $row['Description'], $row['Start Date'], $row['Due Date']));
+            }
+
+            fclose($file);
+        };
+
+        return response()->stream($callback, 200, $headers);
+    }
     /**
      * Display the specified resource.
      *
@@ -148,6 +182,4 @@ class FormController extends Controller
     {
         //
     }
-
-    
 }

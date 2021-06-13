@@ -35,8 +35,10 @@ Route::get('/admin/kursi/setKursi/status/tidak/{id}', 'SeatController@tidak')->n
 Route::resource('/admin/form', 'FormController');
 Route::get('/admin/memenuhiSyarat', 'FormController@memenuhiSyarat')->name('memenuhi');
 Route::get('/admin/tidakMemenuhiSyarat', 'FormController@tidakMemenuhiSyarat')->name('tidakMemenuhi');
-Route::get('/admin/listMemenuhiSyarat', 'FormController@listMemenuhiSyarat')->name('listMemenuhi');
-Route::get('/admin/listTidakMemenuhiSyarat', 'FormController@listTidakMemenuhiSyarat')->name('listTidakMemenuhi');
+Route::get('/admin/export', 'FormController@exportCsv')->name('export');
+
+// Route::get('/admin/listMemenuhiSyarat', 'FormController@listMemenuhiSyarat')->name('listMemenuhi');
+// Route::get('/admin/listTidakMemenuhiSyarat', 'FormController@listTidakMemenuhiSyarat')->name('listTidakMemenuhi');
 
 // GEREJA
 Route::resource('/admin/gereja', 'GerejaController');

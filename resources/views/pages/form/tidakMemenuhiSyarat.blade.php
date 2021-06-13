@@ -9,7 +9,7 @@
                         {{-- CARD HEADER --}}
                         <div class="card-header">
                             <div class="col-sm-12 col-md-6">
-                                <h3>Filter Yang Memenuhi Syarat</h3>
+                                <h3>Filter Yang Tidak Memenuhi Syarat</h3>
                             </div>
                         </div>
 
