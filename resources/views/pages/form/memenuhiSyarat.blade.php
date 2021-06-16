@@ -60,6 +60,7 @@
                                     {{-- @if ($items->status == 'Success') --}}
 
                                     <tbody>
+
                                         @foreach ($items as $item)                                            
                                         <tr>
                                             <td>{{$item->id}}</td>
@@ -67,7 +68,6 @@
                                             <td>{{$item->phone_number}}</td>
                                             <td>{{$item->address}}</td>
                                             <td>{{$item->status}}</td>
-                                            {{-- <td><div class="badge badge-success">Memenuhi Syarat</div></td> --}}
                                         </tr>
                                         @endforeach
                                             
@@ -76,7 +76,7 @@
 
                                 </table>
                             </div>
-                            <span data-href="{{route('export')}}" id="export" class="btn btn-success btn-sm" onclick="exportTasks(event.target);">Export</span>
+                            <span data-href="{{route('export1')}}" id="export" class="btn btn-success btn-sm" onclick="exportTasks(event.target);">Export</span>
                         </div>
 
                     </div>

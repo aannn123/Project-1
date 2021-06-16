@@ -42,23 +42,22 @@ class SeatController extends Controller
         ]);
     }
 
-    public function active($id)
+    public function setActive($id,$kursi)
     {
-        // $gereja = Gereja::where('id', $id)->first();
-        // $item = Seat::where('churc_id', $gereja->id)->get();
-
-        $item = Seat::findOrFail($id);
-        $item['status'] = 'Active';
-        $item->save();
-        return redirect()->route('setKursi', $item->id);
+        $data = Seat::findOrFail($kursi);
+        $gereja = Gereja::where('id', $id)->first();
+        $data['status'] = 'Active';
+        $data->update();
+        return redirect()->route('setKursi',$gereja->id); 
     }
 
-    public function tidak($id)
+    public function setTidak($id,$kursi)
     {
-        $item = Seat::findOrFail($id);
-        $item['status'] = 'Tidak';
-        $item->save();
-        return redirect()->route('setKursi', $item->id);
+        $data = Seat::findOrFail($kursi);
+        $gereja = Gereja::where('id', $id)->first();
+        $data['status'] = 'Tidak';
+        $data->update();
+        return redirect()->route('setKursi', $gereja->id);
     }
 
     /**

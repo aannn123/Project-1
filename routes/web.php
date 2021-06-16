@@ -28,17 +28,15 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 Route::resource('/admin/kursi', 'SeatController');
 Route::get('/admin/kursi', 'SeatController@kursi')->name('kursi');
 Route::get('/admin/kursi/setKursi/{id}', 'SeatController@setKursi')->name('setKursi');
-Route::get('/admin/kursi/setKursi/status/active/{id}', 'SeatController@active')->name('active');
-Route::get('/admin/kursi/setKursi/status/tidak/{id}', 'SeatController@tidak')->name('tidak');
+Route::get('/admin/kursi/setActive/{id}/{kursi}', 'SeatController@setActive')->name('active');
+Route::get('/admin/kursi/setTidak/{id}/{kursi}', 'SeatController@setTidak')->name('tidak');
 
 // FROM
 Route::resource('/admin/form', 'FormController');
 Route::get('/admin/memenuhiSyarat', 'FormController@memenuhiSyarat')->name('memenuhi');
 Route::get('/admin/tidakMemenuhiSyarat', 'FormController@tidakMemenuhiSyarat')->name('tidakMemenuhi');
-Route::get('/admin/export', 'FormController@exportCsv')->name('export');
-
-// Route::get('/admin/listMemenuhiSyarat', 'FormController@listMemenuhiSyarat')->name('listMemenuhi');
-// Route::get('/admin/listTidakMemenuhiSyarat', 'FormController@listTidakMemenuhiSyarat')->name('listTidakMemenuhi');
+Route::get('/admin/memenuhiSyarat/export', 'FormController@exportCsv1')->name('export1');
+Route::get('/admin/tidakMemenuhiSyarat/export', 'FormController@exportCsv2')->name('export2');
 
 // GEREJA
 Route::resource('/admin/gereja', 'GerejaController');
@@ -48,4 +46,6 @@ Route::resource('/admin/worship', 'WorshipsController');
 
 // AGE
 Route::resource('/admin/age', 'AgeController');
+Route::get('/admin/age/export', 'AgeController@ageExportCsv')->name('ageExport');
+
 

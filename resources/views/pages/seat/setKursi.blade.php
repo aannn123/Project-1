@@ -21,6 +21,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Bangku</th>
+                                            <th>Nomor Bangku</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -40,6 +41,7 @@
                                                         <b style="font-size: 12px">{{ $item->number }}</b>
                                                     </div>
                                                 </td>
+                                                <td >{{$item->number}}</td>
                                                 <td>
                                                     @if ($item->status == 'Active')
                                                         <div class="badge badge-success">Active</div>
@@ -50,12 +52,13 @@
                                                 </td>
                                                 <td>
                                                     <button>
-                                                    <a href="{{route('active',$item->id)}}" class="">
+                                                        <a href="{{URL:: route('active', [$item->churc_id,$item->id]) }}">
+                                                        {{-- <a href="{{route('active',$item->id)}}" class=""> --}}
                                                         <i class="fas fa-check" style="color: green"></i>
                                                     </a>
                                                 </button>
                                                 <button>
-                                                    <a href="{{route('tidak', $item->id)}}" class="">
+                                                    <a href="{{URL::route('tidak', [$item->churc_id, $item->id]) }}" class="">
                                                         <i class="fas fa-times" style="color: red"></i>
                                                     </a>
                                                 </button>

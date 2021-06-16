@@ -24,7 +24,7 @@
                                     </div>
 
                                     <div class="card-body">
-                                        111
+                                        {{$all}}
                                     </div>
                                 </div>
                             </div>
@@ -43,7 +43,7 @@
                                     </div>
 
                                     <div class="card-body">
-                                        111
+                                        {{$success}}
                                     </div>
                                 </div>
                             </div>
@@ -61,7 +61,7 @@
                                     </div>
 
                                     <div class="card-body">
-                                        111
+                                        {{$failed}}
                                     </div>
                                 </div>
                             </div>

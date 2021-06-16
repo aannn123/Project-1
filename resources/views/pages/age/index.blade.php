@@ -56,7 +56,9 @@
                                         @endforeach
                                     </tbody>
 
-                                </table>
+                        </table>
+                        <span data-href="{{route('ageExport')}}" id="export" class="btn btn-success btn-sm" onclick="exportTasks(event.target);">Export</span>
+
                                 {{$items->links()}}
                             </div>
                         </div>

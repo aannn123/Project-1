@@ -76,6 +76,8 @@
 
                                 </table>
                             </div>
+                            <span data-href="{{route('export2')}}" id="export" class="btn btn-success btn-sm" onclick="exportTasks(event.target);">Export</span>
+
                         </div>
 
                     </div>
