@@ -17,12 +17,20 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
+// Route::get('/logout', function(){
+//     Auth::logout();
+
+//     return redirect('/')->nmae('logout');
+// });
+
 // ADMIN
-Route::get('/admin', 'AdminController@index')->name('admin');
+Route::get('/', 'AdminController@index')->name('admin');
+Route::get('/logout', 'AdminController@logout')->name('logout');
+// Route::get('/admin', 'AdminController@index')->name('admin');
 
 // SEAT
 Route::resource('/admin/kursi', 'SeatController');

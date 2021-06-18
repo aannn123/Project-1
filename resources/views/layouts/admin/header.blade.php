@@ -218,8 +218,7 @@
                     <i class="fas fa-cog"></i> Settings
                 </a> --}}
                 <div class="dropdown-divider"></div>
-                <a href="{{route('logout')}}" class="dropdown-item has-icon text-danger"
-                    onclick="event.preventDefault(); document.getElementById('logout-form').submit(); ">
+                <a href="{{route('logout')}}" class="dropdown-item has-icon text-danger">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </a>
             </div>
