@@ -27,10 +27,10 @@
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-users"></i>
                     <span>Data Form</span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="gmaps-advanced-route.html">Memenuhi Syarat</a></li>
+                        <li><a href="{{route('memenuhi')}}">Memenuhi Syarat</a></li>
                     </ul>
                     <ul class="dropdown-menu">
-                        <li><a href="gmaps-advanced-route.html">Tidak Memenuhi Syarat</a></li>
+                        <li><a href="{{route('tidakMemenuhi')}}">Tidak Memenuhi Syarat</a></li>
                     </ul>
             </li>
             <li>
@@ -43,18 +43,25 @@
                     <span>Gereja</span>
                 </a>
             </li>
+            <li>
+                <a href="{{route('worship.index')}}"><i class="fas fa-pray"></i>
+                    <span>Worship</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{route('age.index')}}"><i class="fas fa-user"></i>
+                    <span>Age</span>
+                </a>
+            </li>
             <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-chair"></i>
                     <span>Kursi</span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="gmaps-advanced-route.html">Status Kursi</a></li>
+                    <li><a href="{{route('kursi')}}">Kursi Gereja</a></li>
                 </ul>
-                <ul class="dropdown-menu">
-                    <li><a href="gmaps-advanced-route.html">Set Kursi</a></li>
-                </ul>
-                <ul class="dropdown-menu">
-                    <li><a href="gmaps-advanced-route.html">Penamaan Kursi</a></li>
-                </ul>
+                {{-- <ul class="dropdown-menu">
+                    <li><a href="">Set Kursi</a></li>
+                </ul> --}}
             </li>
             {{-- <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="far fa-file-alt"></i>

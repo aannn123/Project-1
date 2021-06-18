@@ -1,4 +1,7 @@
 @extends('layouts.user.default')
+@section('title')
+Form Pendaftaran Ibadah
+@endsection
 @section('content')
     <h5>Data Perorangan</h5>
     <p><i style="font-weight: 600;font-size:14px" class="text-danger">Demi Kesehatan dan keselamatan bersama
@@ -84,8 +87,11 @@
             <div class="form-group col-10">
                 <label class="label-text">Usia</label> <b class="required">*</b>
                 <select name="age" id="inputState" class="form-control">
-                    <option value="" selected>Pilih Usia</option>
-                    <option value="1">...</option>
+                    <option value="" disabled selected>Pilih Usia</option>
+                    @foreach ($age as $item)
+                    <option value="{{$item->number}}">{{$item->number}} Tahun</option>
+
+                    @endforeach
                 </select>
                 @error('age')
                     <div class="text-danger">{{ $message }}</div>
@@ -257,7 +263,9 @@
             <div class="form-group col-10">
                 <b>
                     Apakah Anda bersedia melaksanakan protokol kesehatan saat mengikuti ibadah onsite ?</b> <b
-                    class="required">*</b>
+                    class="required">*</b> <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
+                       Protokol Kesehatan
+                      </button>                      
                 <div>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="answer_7" id="" value="Ya">
@@ -307,19 +315,34 @@
             </div>
         </form>
     </div>
-
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Protokol Kesehatan</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <b>1. </b>Hadir ibadah jika sudah mendaftar dan disetujui. <br>
+          <b>2. </b>Memakai masker standar kain/medis ( bukan masker scuba / buff ). <br>
+          <b>3. </b>Menunjukkan nomor tempat duduk terdaftar kepada peugas pencatat kehadiran. <br>
+          <b>4. </b>Mencuci tangan saat akan masuk ruang ibadah. <br>
+          <b>5. </b>Mengikuti pemeriksaan kewaspadaan kesehatan oleh petugas ( suhu badan, tidak batuk /  pilek / pusing ). <br>
+          <b>6. </b>Menjaga jarak ( 1,5 s/d 2 m ) saat antri masuk ruang ibadah. <br>
+          <b>7. </b>Memberikan salam tidak bersentuhan . <br>
+          <b>8. </b>Memberikan persembahan dalam amplop ( masukkan ke kotak saat masuk ruang ibadah ). <br>
+          <b>9. </b>Duduk sesuai dengan nomor tempat duduk yang diberikan saat pendaftaran.. <br>
+          <b>10. </b>Saat selesai ibadah :. <br>
+          <b>- keluar ruang ibadah sesuai urutan / petunjuk petugas.</b> <br>
+          <b>- Langsung pulang / tidak ngobrol / berkerumun di halaman gedung gereja .</b>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
-@push('js')
-    <script>
-        function test() {
-            Swal.fire(
-                'Good job!',
-                'You clicked the button!',
-                'success'
-            ).then(function() {
-                window.location = "result";
-            })
-        }
-
-    </script>
-@endpush

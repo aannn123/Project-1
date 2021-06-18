@@ -12,49 +12,41 @@
                                 <h3>Gereja</h3>
                             </div>
                             <div class="col-sm-12 col-md-6">
-                                <a href="{{route('gereja.create')}}" class="btn btn-light float-right">
+                                <a href="{{route('worship.create')}}" class="btn btn-light float-right">
                                     Tambah
                                 </a>
                             </div>
                         </div>
-                        <a href="{{route('export')}}" class="btn btn-success">export</a>
+
                         {{-- CARD BODY --}}
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped" id="table">
                                     <thead>
                                         <tr>
-                                            <th>Id</th>
-                                            <th>Nama Gereja</th>
-                                            <th>Bangku</th>
-                                            <th>Nomor Telepon</th>
-                                            <th>Email</th>
-                                            <th>Alamat</th>
+                                            <th>Nama </th>
+                                            <th>Waktu</th>
+                                            <th>Tanggal</th>
+                                            <th>Quota</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @php
-                                            $no =1;
-                                        @endphp 
                                         
                                         @foreach ($items as $item)
                                         
                                         <tr>
-                                            <td>{{$no++}}</td>
                                             <td>{{$item->name}}</td>
-                                            <td>{{$item->seat}}</td>
-                                            <td>{{$item->no_telephone}}</td>
-                                            <td>{{$item->email}}</td>
-                                            <td>{{$item->address}}</td>
+                                            <td>{{$item->time}}</td>
+                                            <td>{{$item->date}}</td>
+                                            <td>{{$item->quota}}</td>
+                                            <td><div class="badge badge-success">{{$item->status}}</div></td>
                                             <td>
-                                                {{-- <a href="#" class= "btn btn-info btn-sm">
-                                                <i class="fa fa-eye"></i>
-                                                </a> --}}
-                                                <a href="{{route('gereja.edit', $item->id)}}" class="btn btn-primary btn-sm">
+                                                <a href="{{route('worship.edit', $item->id)}}" class="btn btn-primary btn-sm">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
-                                                <form action="{{route('gereja.destroy', $item->id)}}" method="post" class="d-inline">
+                                                <form action="{{route('worship.destroy', $item->id)}}" method="post" class="d-inline">
                                                     @csrf
                                                     @method('delete')
                                                     <button class="btn btn-danger btn-sm">

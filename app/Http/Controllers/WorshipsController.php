@@ -2,25 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Gereja;
-use App\Models\Registrants;
 use Illuminate\Http\Request;
 
-class FormController extends Controller
+use App\Models\Worships;
+
+class WorshipsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
-        return view('pages.form.index');
+        $items = Worships::all();
+
+        return view('pages.worship.index')->with([
+            'items' => $items
+        ]);
     }
 
     /**
@@ -30,7 +29,12 @@ class FormController extends Controller
      */
     public function create()
     {
-        //
+        $item = Worships::all();
+
+        return view('pages.worship.create')->with([
+            'item' => $item
+        ]);
+
     }
 
     /**
@@ -41,7 +45,13 @@ class FormController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $data['status'] = 'active';
+        $data['r_quota'] = $request->quota;
+
+
+        Worships::create($data);
+        return redirect()->route('worship.index');
     }
 
     /**
@@ -63,7 +73,11 @@ class FormController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = Worships::findOrFail($id);
+
+        return view('pages.worship.edit')->with([
+            'item' => $item
+        ]);
     }
 
     /**
@@ -75,7 +89,10 @@ class FormController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $item = Worships::findOrFail($id);
+        $item->update($data);
+        return redirect()->route('worship.index');
     }
 
     /**
@@ -86,32 +103,9 @@ class FormController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
+        $item = Worships::findOrFail($id);
+        $item->delete();
 
-    public function memenuhiSyarat()
-    {
-        $gereja = Gereja::where('id')->first();
-
-        $items = Registrants::with(['gereja'])->where()->get();
-        var_dump($gereja);die(); 
-        return view('pages.form.memenuhiSyarat')->with([
-            'items' => $items
-        ]);
-    }
-
-    public function tidakMemenuhiSyarat()
-    {
-        return view('pages.form.tidakMemenuhiSyarat');
-    }
-
-    public function listMemenuhiSyarat()
-    {
-        return view('pages.form.listMemenuhiSyarat');
-    }
-
-    public function listTidakMemenuhiSyarat()
-    {
-        return view('pages.form.listTidakMemenuhiSyarat');
+        return redirect()->route('worship.index');
     }
 }

@@ -1,7 +1,8 @@
-<div class="rounded-circle" style="width:60px;height:60px;background-color:white"></div>
-<div class="mt-4">
+{{-- <div class="rounded-circle" style="width:60px;height:60px;background-color:white"></div> --}}
+<img src="{{asset('assets/img/logo.png')}}" style="width:250px;border:2px solid white;border-radius:5px" alt="">
+<div class="mt-3">
     <b style="font-size: 18px;font-weight:bolder">Form Pendaftaran Ibadah Onsite
-        GKI Lorem Ipsum</b><br>
+        Sinode Gereja Kristus</b><br>
 
     <div class="mb-2 mt-2">
         <h5 style="color:black;">Petunjuk :</h5>

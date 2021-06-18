@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Church;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Hash;
 
 use App\Models\Gereja;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\SeatChurch;
 
 class GerejaController extends Controller
@@ -47,6 +49,9 @@ class GerejaController extends Controller
      */
     public function store(Request $request)
     {
+        // $data = $request->all();
+        // Gereja::create($data);
+        // return redirect()->route('gereja.index');
         $data = $request->all();
         $seat = (int)$data['seat'];
         $result = Gereja::create($data);
@@ -79,7 +84,11 @@ class GerejaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = Gereja::findOrFail($id);
+
+        return view('pages.gereja.edit')->with([
+            'item' => $item
+        ]);
     }
 
     /**
@@ -91,7 +100,22 @@ class GerejaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $gereja = Gereja::findOrFail($id);
+        // for ($i=0; $i < $data['seat']; $i++) { 
+        //     SeatChurch::create([
+        //         'churc_id' => $gereja['id'],
+        //         'number' => $i+1,
+        //         'status' => 'Active',
+        //     ]);
+        // }
+        $gereja->update($data);
+        return redirect()->route('gereja.index');
+    }
+
+    public function export() 
+    {
+        return Excel::download(new Church(), 'users.xlsx');
     }
 
     /**
@@ -102,6 +126,9 @@ class GerejaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Gereja::findOrFail($id);
+        $item->delete();
+
+        return redirect()->route('gereja.index');
     }
 }

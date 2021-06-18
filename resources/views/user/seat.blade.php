@@ -1,5 +1,7 @@
 @extends('layouts.user.default')
-
+@section('title')
+    Set Kursi
+@endsection
 @section('content')
     <div>
         <h5>Pemilihan Kursi</h5>
@@ -163,14 +165,35 @@
             </form>
         </div>
     </div>
+    <button type="button" class="btn btn-primary ml-4 mb-3" data-toggle="modal" data-target="#exampleModalCenter">
+        Kembali ke form
+       </button>            
     </div>
 
+    <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Apakah anda ingin meninggalkan halaman ini ?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>&emsp;Jika anda meninggalkan halaman ini, maka data anda yang sebelumnya akan terhapus.</p>
+        </div>
+        <div class="modal-footer">
+            <form action="{{route('back.form',$name)}}" method="POST">
+            @csrf
+            @method('DELETE')
+            <input type="submit" value="Iya" class="btn btn-success">
+            </form>
+            {{-- <a href="{{route('back.form',$name)}}" class="btn btn-success">Iya</a> --}}
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Tidak</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 @endsection
-@push('js')
-    <script>
-        window.onbeforeunload = function(e) {
-  return 'Apakah anda ingin meninggalkan halaman ini ?';
-};
-    </script>
-@endpush

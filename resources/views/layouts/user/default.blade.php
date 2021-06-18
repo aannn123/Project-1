@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>@yield('title')</title>
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/view.css') }}">
     {{-- <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet"> --}}
@@ -25,7 +25,7 @@
             @yield('content')
         </div>
     <div class="col-md-12 d-flex align-items-center justify-content-center" style="background-color: #001420;height:60px">
-        <b style="color: white">&copy; {{date('Y')}} Copyright GKI Lorem Ipsum</b>
+        <b style="color: white">&copy; {{date('Y')}} Copyright Sinode Gereja Kristus</b>
     </div>
 
 
